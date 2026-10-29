@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activities for Mr. Ward's Classes</title>
+<meta name="description" content="Review activities, unit reviews, and lessons for Mr. Ward's science classes, sorted by grade and unit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4F8FC;
+    --ink: #14213D;
+    --muted: #46526E;
+    --line: rgba(20, 33, 61, 0.18);
+    --white: #FFFFFF;
+    --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+    --body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    color: var(--ink);
+    background-color: var(--paper);
+    /* graph paper: a nod to x/t and v/t graphs */
+    background-image:
+      linear-gradient(rgba(20, 33, 61, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20, 33, 61, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    width: min(100% - 2rem, 62rem);
+    margin-inline: auto;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-block: 1.75rem 1.5rem;
+    text-align: center;
+  }
+
+  .hero img {
+    display: block;
+    width: 100%;
+    max-width: 52rem;
+    height: auto;
+    margin-inline: auto;
+  }
+
+
+  .hero-frame {
+    max-width: 52rem;
+    margin-inline: auto;
+    overflow: hidden;
+    border: 4px solid var(--ink);
+    border-radius: 20px;
+    background: var(--ink);
+  }
+
+  .hero-frame iframe {
+    display: block;
+    width: 100%;
+    height: clamp(380px, 62vh, 540px);
+    border: 0;
+  }
+
+  .hero-open { margin: 0.6rem 0 0; font-size: 0.95rem; }
+  .hero-open a { color: var(--muted); text-underline-offset: 3px; }
+
+  .hero-fallback {
+    max-width: 44rem;
+    margin-inline: auto;
+    padding: 2.5rem 1.5rem;
+    background: #F2A900;
+    border: 4px solid var(--ink);
+    border-radius: 20px;
+    transform: rotate(-1deg);
+  }
+
+  .hero-fallback p {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2rem, 7vw, 3.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-sub {
+    margin: 1.25rem 0 0;
+    font-size: 1.125rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Controls ---------- */
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding-block: 0.75rem;
+    background: rgba(244, 248, 252, 0.94);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(6px);
+  }
+
+  .controls-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    align-items: center;
+  }
+
+  .search {
+    flex: 1 1 15rem;
+    min-width: 0;
+  }
+
+  .search input {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    font: inherit;
+    color: var(--ink);
+    background: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+  }
+
+  .search input::placeholder { color: var(--muted); }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .chip {
+    padding: 0.5rem 0.9rem;
+    font: inherit;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .chip[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .count {
+    margin: 0.5rem 0 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Grades ---------- */
+  main { padding-block: 1.75rem 3rem; }
+
+  .grade {
+    margin-bottom: 2rem;
+    background: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .grade-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--tint);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .num {
+    display: grid;
+    place-items: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    flex: none;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--ink);
+    background: var(--g);
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+  }
+
+  .num.wide { font-size: 1.3rem; letter-spacing: -0.01em; }
+
+  .grade-head h2 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+  }
+
+  .unit {
+    display: grid;
+    grid-template-columns: 13rem 1fr;
+    gap: 0.5rem 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .unit + .unit { border-top: 2px dashed var(--line); }
+
+  .unit h3 {
+    margin: 0.35rem 0 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rows li + li { border-top: 1px solid var(--line); }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.15rem 1rem;
+    align-items: center;
+    padding: 0.8rem 0.75rem;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+
+  .row:hover { background: var(--tint); }
+
+  .row:hover .title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+
+  .title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .topic {
+    grid-column: 1;
+    color: var(--muted);
+  }
+
+  .tag {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    padding: 0.25rem 0.7rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    background: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .empty {
+    padding: 2rem 1rem;
+    text-align: center;
+    background: var(--white);
+    border: 2px dashed var(--ink);
+    border-radius: 20px;
+  }
+
+  .empty strong { font-family: var(--display); font-size: 1.3rem; }
+
+  footer {
+    padding-block: 1.5rem 2.5rem;
+    text-align: center;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 40rem) {
+    .unit { grid-template-columns: 1fr; padding: 1rem; }
+    .unit h3 { margin-top: 0; }
+    .grade-head { padding: 0.85rem 1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1 class="sr-only">Activities for Mr. Ward's Classes</h1>
+
+    <!-- Hero options, tried in this order:
+         1. believes.html  (your talking-face page, dropped in next to this file)
+         2. hero.png       (a plain image, if you'd rather)
+         3. the yellow text sign below -->
+    <div id="heroFrame" class="hero-frame" hidden>
+      <iframe id="heroIframe" title="Mr. Ward believes in you. Click his face to hear it." allow="autoplay"></iframe>
+    </div>
+    <p class="hero-open" id="heroOpen" hidden><a id="heroOpenLink" href="#" target="_blank" rel="noopener">Open Mr. Ward Believes in You full screen</a></p>
+    <img id="heroImg" alt="Mr. Ward believes in you" hidden>
+    <div id="heroFallback" class="hero-fallback">
+      <p>Mr. Ward believes in you.</p>
+    </div>
+
+    <p class="hero-sub">Find your grade and unit below, or search for a topic.</p>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="controls-inner">
+      <div class="search">
+        <label class="sr-only" for="q">Search projects</label>
+        <input id="q" type="search" placeholder="Search by topic, like energy or cells" autocomplete="off">
+      </div>
+      <fieldset class="chips" id="chips">
+        <legend class="sr-only">Filter by type</legend>
+      </fieldset>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap" id="hub">
+    <noscript>This page needs JavaScript turned on to show the project list.</noscript>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">Made by Mr. Ward for his science classes.</div>
+</footer>
+
+<script>
+/* ============================================================
+   EDIT YOUR PROJECTS HERE
+   To add a project: copy a { title, topic, type, url } line into
+   the right unit. Types: Review activity, Unit review, Simulation, Activity, Lesson, Practice.
+   To add a unit: copy a { name, projects: [...] } block.
+   Later, swap the vercel.app links for clean subdomains,
+   like https://energy.robmward.com
+   ============================================================ */
+const HUB = [
+  {
+    name: "6th grade", num: "6", color: "#F2A900", tint: "#FFF1CC",
+    units: [
+      {
+        name: "Unit 2: Energy",
+        projects: [
+          { title: "The Energy Lab", topic: "Types of energy", type: "Review activity", url: "https://the-energy-lab-rho.vercel.app/" },
+          { title: "Science Skateboard", topic: "Potential vs. kinetic energy", type: "Review activity", url: "https://science-skateboard.vercel.app/" },
+          { title: "Energy Unit Review", topic: "Whole-unit review", type: "Unit review", url: "https://test2-grade6-practice.vercel.app/" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "7th grade", num: "7", color: "#2FA877", tint: "#DDF3E8",
+    units: [
+      {
+        name: "Unit 2: Cells",
+        projects: [
+          { title: "The Nucleus Desk", topic: "Organelles, prokaryotic vs. eukaryotic", type: "Review activity", url: "https://the-nucleus-desk.vercel.app/" },
+          { title: "Cell Ninja", topic: "Prokaryotic vs. eukaryotic", type: "Review activity", url: "https://cell-ninja.vercel.app/" },
+          { title: "How Cells Teamed Up", topic: "Symbiosis", type: "Lesson", url: "https://how-cells-teamed-up.vercel.app/" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "8th grade", num: "8", color: "#5C8CFF", tint: "#E0E9FF",
+    units: [
+      {
+        name: "Unit 1: Kinematics",
+        projects: [
+          { title: "Fetch the Graph", topic: "x/t and v/t graphs", type: "Review activity", url: "https://fetch-the-graph.vercel.app/" },
+          { title: "Distance vs. Displacement", topic: "Distance and displacement", type: "Review activity", url: "https://distance-game-nine.vercel.app/" },
+          { title: "Kinematics Review", topic: "Whole-unit review", type: "Unit review", url: "https://test1-review.vercel.app/" }
+        ]
+      },
+      {
+        name: "Unit 2: Dynamics",
+        projects: [
+          { title: "Fetch the Force", topic: "Free body diagrams", type: "Review activity", url: "https://fetch-the-force.vercel.app/" },
+          { title: "Gravity Lab", topic: "Universal gravitation", type: "Simulation", url: "https://universal-gravity-sim.vercel.app/" },
+          { title: "Terminal Velocity Lab", topic: "Terminal velocity and net force", type: "Simulation", url: "https://terminal-velocity-practice.vercel.app/" }
+        ]
+      },
+      {
+        name: "General",
+        projects: [
+          { title: "Calculator Practice", topic: "Calculator skills", type: "Practice", url: "https://calculator-practice-iota.vercel.app/" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "All grades", num: "All", color: "#F0786A", tint: "#FFE3DF",
+    units: [
+      {
+        name: "Daily activity",
+        projects: [
+          { title: "Scize It Up", topic: "Comparing scale, five rounds a day", type: "Activity", url: "https://scize-up.vercel.app/" }
+        ]
+      }
+    ]
+  }
+];
+
+const FILTERS = [
+  { value: "All", label: "All" },
+  { value: "Review activity", label: "Review activities" },
+  { value: "Unit review", label: "Unit reviews" },
+  { value: "Simulation", label: "Simulations" },
+  { value: "Activity", label: "Activities" },
+  { value: "Lesson", label: "Lessons" },
+  { value: "Practice", label: "Practice" }
+];
+
+const hub = document.getElementById("hub");
+const search = document.getElementById("q");
+const chipBox = document.getElementById("chips");
+const countEl = document.getElementById("count");
+let activeType = "All";
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function row(p) {
+  return `<li><a class="row" href="${esc(p.url)}" target="_blank" rel="noopener">
+    <span class="title">${esc(p.title)}</span>
+    <span class="topic">${esc(p.topic)}</span>
+    <span class="tag">${esc(p.type)}</span>
+  </a></li>`;
+}
+
+function render() {
+  const q = search.value.trim().toLowerCase();
+  let total = 0;
+  let html = "";
+
+  for (const g of HUB) {
+    let unitsHtml = "";
+    for (const u of g.units) {
+      const items = u.projects.filter(p => {
+        const typeOk = activeType === "All" || p.type === activeType;
+        const text = [p.title, p.topic, p.type, u.name, g.name].join(" ").toLowerCase();
+        return typeOk && (!q || text.includes(q));
+      });
+      if (!items.length) continue;
+      total += items.length;
+      unitsHtml += `<div class="unit"><h3>${esc(u.name)}</h3><ul class="rows">${items.map(row).join("")}</ul></div>`;
+    }
+    if (unitsHtml) {
+      html += `<section class="grade" style="--g:${g.color};--tint:${g.tint}" aria-labelledby="grade-${g.num}">
+        <header class="grade-head"><span class="num${g.num.length > 1 ? " wide" : ""}" aria-hidden="true">${g.num}</span><h2 id="grade-${g.num}">${esc(g.name)}</h2></header>
+        ${unitsHtml}
+      </section>`;
+    }
+  }
+
+  if (!total) {
+    html = `<div class="empty"><strong>No projects match.</strong><p>Clear the search box or choose All to see everything.</p></div>`;
+  }
+
+  hub.innerHTML = html;
+  countEl.textContent = total === 1 ? "Showing 1 project" : `Showing ${total} projects`;
+}
+
+function buildChips() {
+  chipBox.insertAdjacentHTML("beforeend", FILTERS.map(f =>
+    `<button type="button" class="chip" data-type="${f.value}" aria-pressed="${f.value === activeType}">${f.label}</button>`
+  ).join(""));
+  chipBox.addEventListener("click", e => {
+    const btn = e.target.closest(".chip");
+    if (!btn) return;
+    activeType = btn.dataset.type;
+    chipBox.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === btn));
+    render();
+  });
+}
+
+/* Hero: talking-face page first, then hero.png, then the text sign */
+const heroFrame = document.getElementById("heroFrame");
+const heroIframe = document.getElementById("heroIframe");
+const heroImg = document.getElementById("heroImg");
+const heroFallback = document.getElementById("heroFallback");
+
+async function fileExists(url) {
+  try {
+    const r = await fetch(url, { method: "HEAD" });
+    return r.ok;
+  } catch (e) {
+    return false;
+  }
+}
+
+/* Your live talking-face page. Later you can swap this for
+   https://believes.robmward.com once that subdomain is set up. */
+const HERO_URL = "https://mrward-believes-in-you-7a38.vercel.app/";
+
+function showFrame(url) {
+  heroIframe.src = url;
+  heroFrame.hidden = false;
+  heroFallback.hidden = true;
+  document.getElementById("heroOpenLink").href = url;
+  document.getElementById("heroOpen").hidden = false;
+}
+
+(async function setHero() {
+  if (HERO_URL) {
+    showFrame(HERO_URL);
+    return;
+  }
+  if (await fileExists("believes.html")) {
+    showFrame("believes.html");
+    return;
+  }
+  heroImg.addEventListener("load", () => {
+    heroImg.hidden = false;
+    heroFallback.hidden = true;
+  });
+  heroImg.src = "hero.png"; /* if missing, the text sign just stays */
+})();
+
+search.addEventListener("input", render);
+buildChips();
+render();
+</script>
+</body>
+</html>
