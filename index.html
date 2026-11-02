@@ -369,7 +369,7 @@
 /* ============================================================
    EDIT YOUR PROJECTS HERE
    To add a project: copy a { title, topic, type, url } line into
-   the right unit. Types: Review activity, Unit review, Simulation, Activity, Lesson, Practice.
+   the right unit. Types: Review activity, Unit review, Simulation, Activity, Project, Lesson, Practice.
    To add a unit: copy a { name, projects: [...] } block.
    Later, swap the vercel.app links for clean subdomains,
    like https://energy.robmward.com
@@ -391,6 +391,12 @@ const HUB = [
   {
     name: "7th grade", num: "7", color: "#2FA877", tint: "#DDF3E8",
     units: [
+      {
+        name: "Trimester 1: Exercise Science Project",
+        projects: [
+          { title: "Exercise Science Project", topic: "Plan an experiment, collect data, and present it with a partner", type: "Project", url: "https://tri-1-7thgrade-project.vercel.app/" }
+        ]
+      },
       {
         name: "Unit 2: Cells",
         projects: [
@@ -417,7 +423,8 @@ const HUB = [
         projects: [
           { title: "Fetch the Force", topic: "Free body diagrams", type: "Review activity", url: "https://fetch-the-force.vercel.app/" },
           { title: "Gravity Lab", topic: "Universal gravitation", type: "Simulation", url: "https://universal-gravity-sim.vercel.app/" },
-          { title: "Terminal Velocity Lab", topic: "Terminal velocity and net force", type: "Simulation", url: "https://terminal-velocity-practice.vercel.app/" }
+          { title: "Terminal Velocity Lab", topic: "Terminal velocity and net force", type: "Simulation", url: "https://terminal-velocity-practice.vercel.app/" },
+          { title: "Dynamics Review", topic: "Forces and Newton's laws, whole-unit review", type: "Unit review", url: "https://8th-grade-unit-2review-sitefull.vercel.app/8/forces/" }
         ]
       },
       {
@@ -449,6 +456,7 @@ const FILTERS = [
   { value: "Review activity", label: "Review activities" },
   { value: "Unit review", label: "Unit reviews" },
   { value: "Simulation", label: "Simulations" },
+  { value: "Project", label: "Projects" },
   { value: "Activity", label: "Activities" },
   { value: "Lesson", label: "Lessons" },
   { value: "Practice", label: "Practice" }
