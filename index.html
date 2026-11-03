@@ -265,6 +265,25 @@
 
   .row:hover .title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
 
+  /* Unit reviews: the study-for-the-test rows, pulled out so they are easy to spot.
+     These rules sit after .row:hover on purpose, so the highlight wins the tie. */
+  .row.is-review {
+    padding-left: 1.15rem;
+    background: #FFF6E0;
+    box-shadow: inset 5px 0 0 #F2A900;
+  }
+
+  .row.is-review:hover { background: #FFEBC2; }
+
+  .row.is-review .title { font-size: 1.3rem; }
+
+  .row.is-review .star { margin-right: 0.45rem; color: #B87400; }
+
+  .row.is-review .tag {
+    color: var(--white);
+    background: var(--ink);
+  }
+
   .title {
     font-family: var(--display);
     font-weight: 700;
@@ -473,8 +492,10 @@ function esc(s) {
 }
 
 function row(p) {
-  return `<li><a class="row" href="${esc(p.url)}" target="_blank" rel="noopener">
-    <span class="title">${esc(p.title)}</span>
+  const isReview = p.type === "Unit review";
+  const star = isReview ? '<span class="star" aria-hidden="true">★</span>' : "";
+  return `<li><a class="row${isReview ? " is-review" : ""}" href="${esc(p.url)}" target="_blank" rel="noopener">
+    <span class="title">${star}${esc(p.title)}</span>
     <span class="topic">${esc(p.topic)}</span>
     <span class="tag">${esc(p.type)}</span>
   </a></li>`;
